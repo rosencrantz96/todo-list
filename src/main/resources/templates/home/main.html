@@ -8,8 +8,40 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
+header {
+	position: fixed;
+	top: 280px;
+	left: 0;
+	right: 0;
+}
+
+@
+keyframes fadeInDown { 0% {
+	opacity: 3;
+	transform: translate3d(0, -100%, 0);
+}
+
+to {
+	opacity: 3;
+	transform: translateZ(0);
+}
+
+}
+.titleLogo {
+	animation: fadeInDown 1s;
+}
+
 .homeButton {
+	padding-top: 600px;
 	text-align: center;
+}
+
+button {
+	padding: 40px 100px;
+	font-size: 3.4em;
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
 }
 </style>
 </th:block>

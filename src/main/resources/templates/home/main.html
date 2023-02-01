@@ -7,13 +7,21 @@
 <title>Insert title here</title>
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
-
+	<style>
+.homeButton {
+	text-align: center;
+}
+</style>
 </th:block>
 </head>
 <body>
 	<div layout:fragment="content">
-		<button>login</button>
-		<button>sign up</button>
+		<div class="mainHomeBg">
+			<div class="homeButton">
+				<button>login</button>
+				<button>sign up</button>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

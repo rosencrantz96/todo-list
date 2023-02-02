@@ -5,17 +5,63 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 각 페이지에 스크립트가 작성될 위치 -->
-
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
+.main {
+/* 	display: flex; */
+	justify-content: center;
+	align-items: center;
+}
+
+.calendar {
+	width: 1000px;
+	margin: 50px;
+	margin: auto;
+	padding-top: 30px;
+}
+
+.days {
+	display: flex;
+	margin: 25px 0 10px;
+}
+
+.day {
+	width: calc(100%/ 7);
+	text-align: center;
+}
+
+.dates {
+	display: flex;
+	flex-flow: row wrap;
+	height: 500px;
+	border-top: 1px solid #333333;
+	border-right: 1px solid #333333;
+}
+
+.date {
+	width: calc(100%/ 7);
+	padding: 15px;
+	text-align: right;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #333333;
+}
+
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+  color: #D13E3E;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+  color: #396EE2;
+}
 </style>
 </th:block>
 </head>
 <body>
-	<div layout:fragment="content">
-		<button>&lt;</button>
+	<div layout:fragment="content" class="main calendar">
+		<!-- <button>&lt;</button> -->
 		<div class="days">
 			<div class="day">일</div>
 			<div class="day">월</div>
@@ -26,19 +72,51 @@
 			<div class="day">토</div>
 		</div>
 		<div class="dates"></div>
-		<button>&gt;</button>	
+		<!-- <button>&gt;</button>	 -->
 	</div>
-<th:block layout:fragment="script">
-	<script th:inline="javascript">
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
 		// th:inline="javascript" 이 부분을 꼭 써주고 사용해야 한다!
+		// 년, 월 가져오기
 		var date = new Date();
 
 		var viewYear = date.getFullYear();
-		var viewMonth = date.getMonth();
-		var yearMonth =  viewYear + "년 " + viewMonth + "월"
+		var viewMonth = date.getMonth() + 1;
 
-		var monthBox = document.querySelector('.year-monthBox').innerHTML = yearMonth;
+		var monthBox = document.querySelector('.year-monthBox').innerHTML = viewYear + "년 " + viewMonth + "월";
+		
+		// 일 가져오기
+		var prevLast = new Date(viewYear, viewMonth, 0);
+		var thisLast = new Date(viewYear, viewMonth + 1, 0);
+		
+		var PLDate = prevLast.getDate();
+		var PLDay = prevLast.getDay();
+		
+		var TLDate = thisLast.getDate();
+		var TLDay = thisLast.getDay();
+		
+		var prevDates = [];
+		var thisDates = [...Array(TLDate + 1).keys()].slice(1);
+		var nextDates = [];
+		
+		if (PLDay !== 6) {
+			for(let i=0; i<PLDay+1; i++) {
+				prevDates.unshift(PLDate - i)
+			}
+		}
+		
+		for (let i = 1; i<7-TLDay; i++) {
+			nextDates.push(i);
+		}
+		
+		var dates = prevDates.concat(thisDates, nextDates);
+		
+		dates.forEach((date, i) => {
+			dates[i] = `<div class="date">${date}</div>`
+		})
+		
+		document.querySelector('.dates').innerHTML = dates.join('');
 	</script>
-</th:block>
+	</th:block>
 </body>
 </html>

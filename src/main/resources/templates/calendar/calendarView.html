@@ -6,11 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 각 페이지에 스크립트가 작성될 위치 -->
-<th:block layout:fragment="script">
-	<script th:inline="javascript">
-		// th:inline="javascript" 이 부분을 꼭 써주고 사용해야 한다!
-	</script>
-</th:block>
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
@@ -31,7 +26,19 @@
 			<div class="day">토</div>
 		</div>
 		<div class="dates"></div>
-		<button>&gt;</button>
+		<button>&gt;</button>	
 	</div>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		// th:inline="javascript" 이 부분을 꼭 써주고 사용해야 한다!
+		var date = new Date();
+
+		var viewYear = date.getFullYear();
+		var viewMonth = date.getMonth();
+		var yearMonth =  viewYear + "년 " + viewMonth + "월"
+
+		var monthBox = document.querySelector('.year-monthBox').innerHTML = yearMonth;
+	</script>
+</th:block>
 </body>
 </html>

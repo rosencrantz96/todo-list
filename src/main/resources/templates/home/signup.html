@@ -15,8 +15,40 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
-	
-	
+.signUp {
+	padding-top: 70px;
+	text-align: center;
+}
+
+.signUpBox {
+	width: 1054px;
+	height: 100px;
+	font-size: 70px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-width: thick;
+}
+
+.signUpBox::placeholder {
+	color: #FF8181;
+	opacity: 0.33;
+}
+
+.signUpButton {
+	text-align: center;
+	padding-top: 80px;
+}
+
+.signUpButtonBox {
+	width: 490px;
+	height: 120px;
+	font-size: 70px;
+	background-color: #FF8181;
+	opacity: 0.7; 
+	border: none;
+	color: black;
+}
 </style>
 </th:block>
 </head>
@@ -24,12 +56,16 @@
 	<div layout:fragment="content">
 		<form action="">
 			<div class="signUp">
-				<input placeholder="nickname">
-				<input placeholder="email">
-				<input placeholder="password">
+				<input type="text" class="signUpBox" placeholder="nickname">
 			</div>
-			<div>
-				<button type="submit"> 가입하기 </button>
+			<div class="signUp">
+				<input type="email" class="signUpBox" placeholder="email">
+			</div>	
+			<div class="signUp">
+				<input type="password" class="signUpBox" placeholder="password">
+			</div>
+			<div class="signUpButton">
+				<button type="submit" class="signUpButtonBox">가입하기</button>
 			</div>
 		</form>
 	</div>

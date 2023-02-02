@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/homeLayout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 각 페이지에 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		// th:inline="javascript" 이 부분을 꼭 써주고 사용해야 한다!
+	</script>
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+.logintop {
+padding-top: 210px;
+text-align: center;
+}	
+
+.login {
+	padding-top: 70px;
+	text-align: center;
+}
+
+.loginBox {
+	width: 1054px;
+	height: 100px;
+	font-size: 70px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-width: thick;
+}
+
+.loginBox::placeholder {
+	color: #FF8181;
+	opacity: 0.33;
+}
+
+.loginButton {
+	text-align: center;
+	padding-top: 80px;
+}
+
+.loginButtonBox {
+	width: 830px;
+	height: 120px;
+	font-size: 70px;
+	background-color: #FF8181;
+	opacity: 0.7;
+	border: none;
+	color: black;
+}
+</style>
+</th:block>
 </head>
 <body>
-	<h2>로그인 페이지입니다.</h2>
+	<div layout:fragment="content">
+		<form action="">
+			<div class="logintop">
+				<input type="email" class="loginBox" placeholder="email">
+			</div>
+			<div class="login">
+				<input type="password" class="loginBox" placeholder="password">
+			</div>
+			<div class="loginButton">
+				<button type="submit" class="loginButtonBox">오늘의 할 일 시작하기!</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

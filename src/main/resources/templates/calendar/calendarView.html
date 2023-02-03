@@ -8,43 +8,83 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
-.main {
-/* 	display: flex; */
-	justify-content: center;
-	align-items: center;
+	* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ /*  min-height: 100vh; */
 }
 
 .calendar {
-	width: 1000px;
-	margin: 50px;
-	margin: auto;
-	padding-top: 30px;
+padding-top: 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.year-month {
+  font-size: 35px;
+  font-weight: bold;
+  color: #ff8181;
+}
+
+.nav {
+  display: flex;
+  border: 1px solid #333333;
+  border-radius: 5px;
+}
+
+.nav-btn {
+  width: 28px;
+  height: 30px;
+  border: none;
+  font-size: 16px;
+  line-height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.go-today {
+  width: 75px;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
 }
 
 .days {
-	display: flex;
-	margin: 25px 0 10px;
+  display: flex;
+  margin: 25px 0 10px;
 }
 
 .day {
-	width: calc(100%/ 7);
-	text-align: center;
+  width: calc(100% / 7);
+  text-align: center;
 }
 
 .dates {
-	display: flex;
-	flex-flow: row wrap;
-	height: 500px;
-	border-top: 1px solid #333333;
-	border-right: 1px solid #333333;
+  display: flex;
+  flex-flow: row wrap;
+  height: 500px;
+  border-top: 1px solid #333333;
+  border-right: 1px solid #333333;
 }
 
 .date {
-	width: calc(100%/ 7);
-	padding: 15px;
-	text-align: right;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #333333;
+  width: calc(100% / 7);
+  padding: 15px;
+  text-align: right;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #333333;
 }
 
 .day:nth-child(7n + 1),
@@ -56,67 +96,59 @@
 .date:nth-child(7n) {
   color: #396EE2;
 }
+
+.other {
+  opacity: 0.3;
+}
+
+.today {
+  position: relative;
+  color: #FFFFFF;
+}
+
+.today::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-color: #FF0000;
+  border-radius: 50%;
+  content: '';
+}
+
+
 </style>
 </th:block>
 </head>
 <body>
-	<div layout:fragment="content" class="main calendar">
-		<!-- <button>&lt;</button> -->
-		<div class="days">
-			<div class="day">일</div>
-			<div class="day">월</div>
-			<div class="day">화</div>
-			<div class="day">수</div>
-			<div class="day">목</div>
-			<div class="day">금</div>
-			<div class="day">토</div>
+	<div layout:fragment="content" class="container-xxl body">
+		<div class="calendar">
+			<div class="header">
+				<div class="year-month"></div>
+				<div class="nav">
+					<button class="nav-btn go-prev">&lt;</button>
+					<button class="nav-btn go-today">Today</button>
+					<button class="nav-btn go-next">&gt;</button>
+				</div>
+			</div>
+			<div class="main">
+				<div class="days">
+					<div class="day">일</div>
+					<div class="day">월</div>
+					<div class="day">화</div>
+					<div class="day">수</div>
+					<div class="day">목</div>
+					<div class="day">금</div>
+					<div class="day">토</div>
+				</div>
+				<div class="dates"></div>
+			</div>
 		</div>
-		<div class="dates"></div>
-		<!-- <button>&gt;</button>	 -->
+		<script type="text/javascript" src="../js/calendar.js"></script>
 	</div>
-	<th:block layout:fragment="script">
-		<script th:inline="javascript">
-		// th:inline="javascript" 이 부분을 꼭 써주고 사용해야 한다!
-		// 년, 월 가져오기
-		var date = new Date();
-
-		var viewYear = date.getFullYear();
-		var viewMonth = date.getMonth() + 1;
-
-		var monthBox = document.querySelector('.year-monthBox').innerHTML = viewYear + "년 " + viewMonth + "월";
-		
-		// 일 가져오기
-		var prevLast = new Date(viewYear, viewMonth, 0);
-		var thisLast = new Date(viewYear, viewMonth + 1, 0);
-		
-		var PLDate = prevLast.getDate();
-		var PLDay = prevLast.getDay();
-		
-		var TLDate = thisLast.getDate();
-		var TLDay = thisLast.getDay();
-		
-		var prevDates = [];
-		var thisDates = [...Array(TLDate + 1).keys()].slice(1);
-		var nextDates = [];
-		
-		if (PLDay !== 6) {
-			for(let i=0; i<PLDay+1; i++) {
-				prevDates.unshift(PLDate - i)
-			}
-		}
-		
-		for (let i = 1; i<7-TLDay; i++) {
-			nextDates.push(i);
-		}
-		
-		var dates = prevDates.concat(thisDates, nextDates);
-		
-		dates.forEach((date, i) => {
-			dates[i] = `<div class="date">${date}</div>`
-		})
-		
-		document.querySelector('.dates').innerHTML = dates.join('');
-	</script>
-	</th:block>
 </body>
 </html>

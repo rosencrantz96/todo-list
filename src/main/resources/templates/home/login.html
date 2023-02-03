@@ -16,14 +16,21 @@
 <th:block layout:fragment="css">
 	<style>
 .logintop {
-padding-top: 210px;
-text-align: center;
-}	
+	padding-top: 110px;
+	text-align: center;
+}
 
 .login {
 	padding-top: 70px;
 	text-align: center;
 }
+
+.logincheck {
+	padding-top: 70px;
+	text-align: center;
+	font-size: 3em;
+}
+
 
 .loginBox {
 	width: 1054px;
@@ -65,6 +72,10 @@ text-align: center;
 			</div>
 			<div class="login">
 				<input type="password" class="loginBox" placeholder="password">
+			</div>
+			<div class="logincheck">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">이메일 기억하기</label>
 			</div>
 			<div class="loginButton">
 				<button type="submit" class="loginButtonBox">오늘의 할 일 시작하기!</button>

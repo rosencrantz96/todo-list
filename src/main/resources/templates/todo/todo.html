@@ -8,14 +8,113 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
+.navLine {
+	display: flex;
+	padding-top: 30px;
+	font-size: 1.5em;
+}
+
+.nav-btn {
+	background-color: transparent;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	border-color: white;
+}
+
+.navPlus {
+	margin-left: auto;
+	background-color: transparent;
+}
+
+.outlistLine {
+	margin: 5px;
+	/* padding: 20px; */
+	border: 1px solid white;
+	/* border-radius: 10px; */
+	background: white;
+}
+
+.listLine {
+	/* padding-top: 30px; */
+	margin: 5px;
+	padding: 20px;
+	border: 1px solid #ff8181;
+	/* border-radius: 10px; */
+	background: white;
+}
+
+.diaryLine {
+	padding-top: 15px;
+	margin: 5px;
+	/* padding: 10px; */
+}
+
+.emoji {
+	display: flex;
+	justify-content: space-around;
+}
+
+.emoji>a {
+	cursor: pointer;
+}
+
+.diary {
+	padding-top: 35px;
+	text-align: center;
+	border: none;
+}
+
+.diary>input {
+	border: none;
+}
 </style>
 </th:block>
 </head>
 <body>
 	<div layout:fragment="content" class="container-xxl">
-		<div class="">버튼입니다.</div>
-		<div class="">일정입니다.</div>
-		<div class="">일기입니다.</div>
+		<div class="navLine">
+			<div class="nav">
+				<button class="nav-btn" onclick="prevDate()">&lt;</button>
+				<button class="nav-btn">today</button>
+				<button class="nav-btn" onclick="nextDate()">&gt;</button>
+			</div>
+			<div class="navPlus">
+				<button class="nav-btn">일정 추가</button>
+			</div>
+		</div>
+		<div>
+			<div class="outlistLine">
+				<div class="listLine">
+					<div
+						class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
+						<input type="checkbox"
+							class="custom-control-input todo-header-item" id="customCheck0"
+							value=0> <label
+							class="custom-control-label todo-header-item" for="customCheck0"><h5
+								class="title title0">
+								<!--제목-->
+							</h5></label> <span class="time-over todo-display-none" id="time-over0">&nbsp;일정입니다.</span>
+					</div>
+				</div>
+			</div>
+			<div class="outlistLine">
+				<div class="listLine">
+					<form>
+						<div class="emoji">
+							<a><img alt="기쁨" src="../images/emoji1.png"></a> <a><img
+								alt="행복" src="../images/emoji2.png"></a> <a><img alt="평범"
+								src="../images/emoji3.png"></a> <a><img alt="속상"
+								src="../images/emoji4.png"></a> <a><img alt="짜증남"
+								src="../images/emoji5.png"></a>
+						</div>
+						<div class="diary">
+							<input placeholder="오늘은 어떤 하루였나요?">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

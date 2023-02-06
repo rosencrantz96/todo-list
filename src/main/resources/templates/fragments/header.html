@@ -7,7 +7,7 @@
 </head>
 <body>
 	<!-- homeHeader 선언 -->
-	<div th:fragment="homeHeader" class="container-xxl">
+	<div th:fragment="header" class="container-xxl">
 		<header>
 			<div class="titleLogo">
 				<a href="/"> 
@@ -23,8 +23,8 @@
 			<a class="nav-link" sec:authorize="isAuthenticated()" href="/members/logout">LOGOUT</a>
 			<form class="d-flex" role="search">
 				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search" style="border-color: #ff8181;">
-				<button class="btn btn-outline-success" type="submit" style="border-color: #ff8181; color: black;">Search</button>
+					aria-label="Search" style="border-color: black;">
+				<button class="btn btn-outline-success" type="submit" style="border-color: black; color: black;">Search</button>
 			</form>
 		</nav>
 	</div>

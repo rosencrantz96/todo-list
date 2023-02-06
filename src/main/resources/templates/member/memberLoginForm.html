@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" th:src="@{/js/cookie.js}"></script>
 <!-- 각 페이지에 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
@@ -57,8 +58,8 @@
 
 .loginBox {
 	width: 1054px;
-	height: 100px;
-	font-size: 70px;
+	/* height: 100px; */
+	font-size: 2em;
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -76,13 +77,16 @@
 }
 
 .loginButtonBox {
-	width: 830px;
-	height: 120px;
-	font-size: 70px;
+	/* 	width: 830px;
+	height: 120px; */
+	margin: 20px;
+	padding: 30px;
+	font-size: 2em;
 	background-color: #FF8181;
 	opacity: 0.7;
 	border: none;
 	color: black;
+	border-radius: 10px;
 }
 </style>
 </th:block>
@@ -91,25 +95,29 @@
 	<div layout:fragment="content">
 		<form action="/members/login" method="post">
 			<div class="logintop">
-				<label th:for="email"></label> <input type="email" name="email" id="email"
-					class="loginBox" placeholder="email">
+				<label th:for="email"></label> <input type="email" name="email"
+					id="email" class="loginBox" placeholder="email">
 			</div>
 			<div class="login">
 				<label th:for="password"></label> <input type="password"
-					name="password" id="password" class="loginBox" placeholder="password">
+					name="password" id="password" class="loginBox"
+					placeholder="password">
 			</div>
 			<div class="logincheck">
 				<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
 				<label><input type="checkbox" name="id_save" id="id_save" />아이디
 					기억</label>
 				<div class="loginButton">
-					<button type="submit" class="loginButtonBox" id="loginbtn">오늘의 할 일 시작하기!</button>
-					<button type="button" class="loginButtonBox" onClick="location.href='/members/new'">회원가입</button>
+					<button type="submit" class="loginButtonBox" id="loginbtn">오늘의
+						할 일 시작하기!</button>
+					<button type="button" class="loginButtonBox"
+						onClick="location.href='/members/new'">회원가입</button>
 				</div>
 			</div>
 			<input type="hidden" th:name="${_csrf.parameterName}"
 				th:value="${_csrf.token}">
 		</form>
 	</div>
+
 </body>
 </html>

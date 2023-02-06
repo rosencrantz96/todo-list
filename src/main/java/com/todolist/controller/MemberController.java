@@ -41,6 +41,8 @@ public class MemberController {
 	// 회원가입 버튼을 눌렀을 때 실행되는 메소드
 	@PostMapping(value = "/new")
 	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+		
+		// 에러가 있다면 회원가입 페이지로 이동
 		if (bindingResult.hasErrors()) {
 			return "member/memberForm";
 		}
@@ -48,7 +50,7 @@ public class MemberController {
 		try {
 			Member member = Member.createMember(memberFormDto, passwordEncoder);
 			memberService.saveMember(member);
-		} catch (Exception e) {
+		} catch (IllegalStateException e) {
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/memberForm";
 		}

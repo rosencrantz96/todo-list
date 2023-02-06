@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.todolist.constant.Role;
 import com.todolist.entity.Member;
 import com.todolist.repository.MemberRepository;
 
@@ -30,6 +31,7 @@ public class MemberService implements UserDetailsService {
 		return User.builder()
 				.username(member.getEmail())
 				.password(member.getPassword())
+				.roles(member.getRole().toString())
 				.build();
 	}
 	

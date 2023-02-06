@@ -16,11 +16,11 @@
 			</div>
 		</header>
 		<nav class="nav" id="navbarSupportedContent">
-			<a class="nav-link" href="/user/calendar" sec:authorize="hasAnyAuthority('ROLE_USER')">CALENDAR</a> 
-			<a class="nav-link" href="/user/todo" sec:authorize="hasAnyAuthority('ROLE_USER')">TODAY</a> 
-			<a class="nav-link" href="/user/pages" sec:authorize="hasAnyAuthority('ROLE_USER')">MY PAGE</a> 
-			<a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">LOGIN</a> 
-			<a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">LOGOUT</a>
+			<a class="nav-link" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/user/calendar">CALENDAR</a> 
+			<a class="nav-link" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/user/todo">TODAY</a> 
+			<a class="nav-link" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/user/pages">MY PAGE</a> 
+			<a class="nav-link" sec:authorize="isAnonymous()" href="/members/login">LOGIN</a> 
+			<a class="nav-link" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/user/logout">LOGOUT</a>
 			<!-- <form class="d-flex" role="search" th:action="@{/}" method="get">
 				<input name="searchQuery" class="form-control me-2" type="search"
 					placeholder="Search" aria-label="Search">

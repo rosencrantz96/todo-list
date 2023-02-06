@@ -26,10 +26,12 @@ button {
 <body>
 	<div layout:fragment="content" class="container-xxl">
 		<div class="mainHomeBg">
-			<div class="homeButton">
-				<button>login</button>
-				<button>sign up</button>
-			</div>
+		<form action="/members/login" method="post">
+				<div class="homeButton">
+					<button type="button" onClick="location.href='/members/login'">login</button>
+					<button type="button" onClick="location.href='/members/new'">sign up</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>

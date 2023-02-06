@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -9,20 +10,22 @@
 	<div th:fragment="homeHeader" class="container-xxl">
 		<header>
 			<div class="titleLogo">
-				<img alt="로고" src="../images/titleLogo.png">
+				<a href="/"> 
+					<img alt="로고" src="/images/titleLogo.png">
+				</a>
 			</div>
 		</header>
-		<nav class="navbar">
-			<a class="nav-link" href="#">CALENDAR</a> 
-			<a class="nav-link" href="#">TODAY</a>
-			<a class="nav-link" href="#">MY PAGE</a> 
-			<a class="nav-link" href="#">LOGIN</a>
-			<a class="nav-link" href="#">LOGOUT</a>
-			<form class="d-flex" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
+		<nav class="nav">
+			<a class="nav-link" href="/calendar" sec:authorize="isAuthenticated()">CALENDAR</a> 
+				<a class="nav-link" href="/todo" sec:authorize="isAuthenticated()">TODAY</a> 
+				<a class="nav-link" href="/pages/my" sec:authorize="isAuthenticated()">MY PAGE</a> 
+				<a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">LOGIN</a> 
+				<a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">LOGOUT</a>
+			<!-- <form class="d-flex" role="search" th:action="@{/}" method="get">
+				<input name="searchQuery" class="form-control me-2" type="search"
+					placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
+			</form> -->
 		</nav>
 	</div>
 </body>

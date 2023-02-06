@@ -63,12 +63,12 @@
 	<div layout:fragment="content">
 		<form action="/members/new" method="post" th:object="${memberFormDto}">
 			<div class="signUp">
-				<label th:for="nickname"></label>
-				<input type="text" th:field="*{nickname}" class="signUpBox" placeholder="nickname">
-				<p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="fieldError">Incorrect Data</p>
+				<label th:for="name"></label>
+				<input type="text" th:field="*{name}" class="signUpBox" placeholder="name">
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect Data</p>
 			</div>
 			<div class="signUp">
-				<label th:for="name"></label>
+				<label th:for="email"></label>
 				<input type="email" th:field="*{email}" class="signUpBox" placeholder="email">
 				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect Data</p>
 			</div>	

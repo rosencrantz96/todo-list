@@ -91,7 +91,7 @@
 	<div layout:fragment="content">
 		<form action="/members/login" method="post">
 			<div class="logintop">
-				<label th:for="name"></label> <input type="email" name="email" id="email"
+				<label th:for="email"></label> <input type="email" name="email" id="email"
 					class="loginBox" placeholder="email">
 			</div>
 			<div class="login">
@@ -100,10 +100,10 @@
 			</div>
 			<div class="logincheck">
 				<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-				<label><input type="checkbox" name="id_save" />아이디
+				<label><input type="checkbox" name="id_save" id="id_save" />아이디
 					기억</label>
 				<div class="loginButton">
-					<button type="submit" class="loginButtonBox">오늘의 할 일 시작하기!</button>
+					<button type="submit" class="loginButtonBox" id="loginbtn">오늘의 할 일 시작하기!</button>
 					<button type="button" class="loginButtonBox" onClick="location.href='/members/new'">회원가입</button>
 				</div>
 			</div>

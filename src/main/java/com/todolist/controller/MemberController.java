@@ -37,21 +37,6 @@ public class MemberController {
 		model.addAttribute("memberFormDto", new MemberFormDto());
 		return "member/memberForm";
 	}
-	
-	@Autowired
-	private final SessionManager sessionManager;
-	
-	/*
-	 * // 쿠키, 세션 테스트 public String loginMember2(HttpServletResponse response,
-	 * HttpSession session, @RequestParam String email) { Cookie idCookie = new
-	 * Cookie("userCookieId", email); response.addCookie(idCookie);
-	 * 
-	 * session.setAttribute("userSessionId2", email);
-	 * 
-	 * sessionManager.createSession(email, response);
-	 * 
-	 * return "member/memberLoginForm"; }
-	 */
 
 	// 회원가입 버튼을 눌렀을 때 실행되는 메소드
 	@PostMapping(value = "/new")
@@ -76,6 +61,21 @@ public class MemberController {
 	public String loginMember() {
 		return "member/memberLoginForm";
 	}
+
+	@Autowired
+	private final SessionManager sessionManager;
+
+	/*
+	 * // 쿠키, 세션 테스트 public String loginMember2(HttpServletResponse response,
+	 * HttpSession session, @RequestParam String email) { Cookie idCookie = new
+	 * Cookie("userCookieId", email); response.addCookie(idCookie);
+	 * 
+	 * session.setAttribute("userSessionId2", email);
+	 * 
+	 * sessionManager.createSession(email, response);
+	 * 
+	 * return "member/memberLoginForm"; }
+	 */
 
 	// 로그인 실패
 	public String loginError(Model model) {

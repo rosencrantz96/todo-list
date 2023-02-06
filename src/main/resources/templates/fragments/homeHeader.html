@@ -15,12 +15,12 @@
 				</a>
 			</div>
 		</header>
-		<nav class="nav">
-			<a class="nav-link" href="/calendar" sec:authorize="isAuthenticated()">CALENDAR</a> 
-				<a class="nav-link" href="/todo" sec:authorize="isAuthenticated()">TODAY</a> 
-				<a class="nav-link" href="/pages/my" sec:authorize="isAuthenticated()">MY PAGE</a> 
-				<a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">LOGIN</a> 
-				<a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">LOGOUT</a>
+		<nav class="nav" id="navbarSupportedContent">
+			<a class="nav-link" href="/user/calendar" sec:authorize="hasAnyAuthority('ROLE_USER')">CALENDAR</a> 
+			<a class="nav-link" href="/user/todo" sec:authorize="hasAnyAuthority('ROLE_USER')">TODAY</a> 
+			<a class="nav-link" href="/user/pages" sec:authorize="hasAnyAuthority('ROLE_USER')">MY PAGE</a> 
+			<a class="nav-link" href="/members/login" sec:authorize="isAnonymous()">LOGIN</a> 
+			<a class="nav-link" href="/members/logout" sec:authorize="isAuthenticated()">LOGOUT</a>
 			<!-- <form class="d-flex" role="search" th:action="@{/}" method="get">
 				<input name="searchQuery" class="form-control me-2" type="search"
 					placeholder="Search" aria-label="Search">

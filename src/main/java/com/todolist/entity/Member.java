@@ -2,6 +2,8 @@ package com.todolist.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.todolist.constant.Role;
 import com.todolist.dto.MemberFormDto;
 
 import lombok.Getter;
@@ -20,14 +23,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member extends BaseEntity {
 	
 	@Id
-	@Column(unique = true)
+	@Column(name = "member_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String nickname;
+	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	@Column(unique = true)
 	private String email;
@@ -37,12 +43,14 @@ public class Member {
 	public static Member createMember (MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 		// 멤버 객체 생성
 		Member member = new Member();
-		member.setNickname(memberFormDto.getNickname());
+		member.setName(memberFormDto.getName());
 		member.setEmail(memberFormDto.getEmail());
 		
 		// 패스워드는 암호화 처리
 		String password = passwordEncoder.encode(memberFormDto.getPassword()); // 비밀번호 암호화
 		member.setPassword(password); // 암호화 한 것 저장
+		
+		member.setRole(Role.USER);
 		
 		return member;
 	}

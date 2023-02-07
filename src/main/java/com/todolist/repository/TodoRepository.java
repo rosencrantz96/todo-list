@@ -1,5 +1,5 @@
 package com.todolist.repository;
 
-public class CalendarRepository {
+public class TodoRepository {
 
 }

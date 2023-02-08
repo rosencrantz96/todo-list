@@ -1,17 +1,20 @@
 package com.todolist.dto;
 
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
+
 
 import com.todolist.constant.TodoStatus;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 public class TodoDto {
-	@NotBlank(message = "일정을 입력해주세요.")
+	private LocalDate todoDate;
+	
 	private String todoContent;
 	
 	private TodoStatus todoStatus;
+	
+	
 }

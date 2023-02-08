@@ -1,6 +1,6 @@
 package com.todolist.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.todolist.constant.TodoStatus;
 import com.todolist.dto.TodoDto;
+import com.todolist.dto.TodoFormDto;
 
 import lombok.*;
 
@@ -31,11 +34,9 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long todoId;
 	
-	/* private LocalDateTime listDate; */
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	/* @Temporal(value = TemporalType.DATE) */
+	@Column(name = "todo_date")
+	private LocalDate todoDate;
 	
 	@Column(name = "todo_content")
 	private String todoContent;
@@ -43,14 +44,26 @@ public class Todo {
 	@Enumerated(EnumType.STRING)
 	private TodoStatus todoStatus;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id")
+	private Member memberId;
+	
 	// todo 객체를 생성
 	public static Todo createTodo(Member member, TodoDto todoDto) {
 		Todo todo = new Todo();
-		todo.setMember(member);
+		todo.setMemberId(member);
 		
+		todo.setTodoDate(todoDto.getTodoDate());
 		todo.setTodoContent(todoDto.getTodoContent());
-		todo.setTodoStatus(todoDto.getTodoStatus());
+		todo.setTodoStatus(todoDto.getTodoStatus().START);
 		
 		return todo;
+	}
+
+	public void updateItem(TodoFormDto todoFormDto) {
+		this.todoId = todoFormDto.getTodoId();
+		this.todoDate = todoFormDto.getTodoDate();
+		this.todoContent = todoFormDto.getTodoContent();
+		this.todoStatus = todoFormDto.getTodoStatus();
 	}
 }

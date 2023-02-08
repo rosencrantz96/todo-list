@@ -15,9 +15,15 @@ public class TodoController {
 		return "todo/calendar";
 	}
 
-	// 일정 등록 페이지를 보여줌
+	// 일정 페이지를 보여줌
 	@GetMapping(value = "/user/todo")
 	public String todo() {
 		return "todo/todo";
+	}
+	
+	// 일정 등록 페이지를 보여줌 
+	@GetMapping(value = "/user/todoForm")
+	public String todoForm() {
+		return "todo/todoForm";
 	}
 }

@@ -28,17 +28,17 @@ public class Member extends BaseEntity {
 	@Id
 	@Column(name = "member_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	private String name;
-	
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private Long memberId;
 	
 	@Column(unique = true)
 	private String email;
+
+	private String name;
 	
 	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	public static Member createMember (MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 		// 멤버 객체 생성

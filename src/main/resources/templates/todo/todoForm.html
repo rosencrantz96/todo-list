@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 각 페이지에 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+
+</th:block>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+.addWrap {
+	padding-top: 30px;
+}
+
+.outlistLine {
+	margin: 5px;
+	/* padding: 20px; */
+	border: 1px solid white;
+	/* border-radius: 10px; */
+	background: white;
+	/* padding-top: 30px; */
+}
+
+.listLine {
+	/* padding-top: 30px; */
+	margin: 5px;
+	padding: 20px;
+	border: 1px solid #ff8181;
+	/* border-radius: 10px; */
+	background: white;
+}
+
+.diaryLine {
+	padding-top: 15px;
+	margin: 5px;
+	/* padding: 10px; */
+}
+
+.emoji {
+	display: flex;
+	justify-content: space-around;
+}
+
+.emoji>a {
+	cursor: pointer;
+}
+
+.diary {
+	padding-top: 35px;
+	text-align: center;
+	border: none;
+}
+
+.diary>input {
+	border: none;
+}
+
+.navLine {
+	display: flex;
+	padding-top: 30px;
+	font-size: 1.5em;
+}
+
+.nav-btn {
+	background-color: transparent;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	border-color: white;
+}
+
+.add {
+	text-decoration: none;
+	color: black;
+	margin-top: 15px;
+	margin-right: 10px;
+	/* 	margin: 10px; */
+	/* padding: 10px; */
+}
+
+.navPlus {
+	margin-left: auto;
+	background-color: transparent;
+}
+</style>
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" class="container-xxl">
+		<div class="addWrap">
+			<div class="outlistLine">
+				<div class="listLine">
+					<form th:object="${todoFormDto}">
+						<div class="mb-3">
+							<label for="formGroupExampleInput" class="form-label">DATE</label>
+							<input type="date" class="form-control"
+								id="formGroupExampleInput">
+						</div>
+						<div class="form-floating">
+							<textarea class="form-control" placeholder="일정을 등록하세요."
+								id="floatingTextarea2" style="height: 100px"></textarea>
+							<label for="floatingTextarea2">일정 등록</label>
+						</div>
+						<div class="navLine">
+							<div class="nav">
+								<button class="nav-btn" th:formaction="@{'/user/todo'}"
+									type="submit">등록</button>
+							</div>
+						</div>
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

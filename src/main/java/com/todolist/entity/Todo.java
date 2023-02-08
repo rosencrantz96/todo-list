@@ -28,6 +28,7 @@ import lombok.*;
 @Setter
 @ToString
 public class Todo {
+	// TODO : '하루'에 담기는 '일정'은 여러개... 그러니까 날짜 객체에 일정들을 배열로 받아야 하는 것 아닌가? 
 	
 	@Id
 	@Column(name = "todo_id")

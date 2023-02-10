@@ -42,6 +42,7 @@ public class Todo {
 	@Column(name = "todo_content")
 	private String todoContent;
 	
+	@Column(name = "todo_status")
 	@Enumerated(EnumType.STRING)
 	private TodoStatus todoStatus;
 	
@@ -49,7 +50,7 @@ public class Todo {
 	@JoinColumn(name = "member_id")
 	private Member memberId;
 	
-	// todo 객체를 생성
+	// TODO 객체를 생성
 	public static Todo createTodo(Member member, TodoDto todoDto) {
 		Todo todo = new Todo();
 		todo.setMemberId(member);

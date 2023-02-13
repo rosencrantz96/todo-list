@@ -28,7 +28,7 @@ import lombok.*;
 @Setter
 @ToString
 public class Todo {
-	// TODO : '하루'에 담기는 '일정'은 여러개... 그러니까 날짜 객체에 일정들을 배열로 받아야 하는 것 아닌가? 
+	// TODO : '하루'에 담기는 '일정'은 여러개... 그러니까 날짜 객체에 일정들을 배열로 받아야 하는 걸까...? 
 	
 	@Id
 	@Column(name = "todo_id")
@@ -36,8 +36,9 @@ public class Todo {
 	private Long todoId;
 	
 	/* @Temporal(value = TemporalType.DATE) */
-	@Column(name = "todo_date")
-	private LocalDate todoDate;
+	/*
+	 * @Column(name = "todo_date") private LocalDate todoDate;
+	 */
 	
 	@Column(name = "todo_content")
 	private String todoContent;
@@ -46,26 +47,32 @@ public class Todo {
 	@Enumerated(EnumType.STRING)
 	private TodoStatus todoStatus;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member memberId;
+	/*
+	 * @ManyToOne(fetch = FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name = "member_id") private Member memberId;
+	 */
 	
-	// TODO 객체를 생성
-	public static Todo createTodo(Member member, TodoDto todoDto) {
-		Todo todo = new Todo();
-		todo.setMemberId(member);
-		
-		todo.setTodoDate(todoDto.getTodoDate());
-		todo.setTodoContent(todoDto.getTodoContent());
-		todo.setTodoStatus(todoDto.getTodoStatus().START);
-		
-		return todo;
-	}
-
-	public void updateItem(TodoFormDto todoFormDto) {
-		this.todoId = todoFormDto.getTodoId();
-		this.todoDate = todoFormDto.getTodoDate();
-		this.todoContent = todoFormDto.getTodoContent();
-		this.todoStatus = todoFormDto.getTodoStatus();
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "calendar_date")
+	private Calendar calendar_date;
+	
+	
+	// todo 객체를 생성
+	/*
+	 * public static Todo createTodo(Member member, TodoDto todoDto) { Todo todo =
+	 * new Todo(); todo.setMemberId(member);
+	 * 
+	 * todo.setTodoDate(todoDto.getTodoDate());
+	 * todo.setTodoContent(todoDto.getTodoContent());
+	 * todo.setTodoStatus(todoDto.getTodoStatus().START);
+	 * 
+	 * return todo; }
+	 */
+	/*
+	 * public void updateItem(TodoFormDto todoFormDto) { this.todoId =
+	 * todoFormDto.getTodoId(); this.todoDate = todoFormDto.getTodoDate();
+	 * this.todoContent = todoFormDto.getTodoContent(); this.todoStatus =
+	 * todoFormDto.getTodoStatus(); }
+	 */
 }

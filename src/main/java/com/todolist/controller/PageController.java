@@ -8,10 +8,9 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class PageController {
-	
-	// 마이 페이지를 불러옴
+	// 마이페이지 불러오기
 	@GetMapping(value = "/user/pages")
-	public String mypage() {
+	public String myPage() {
 		return "page/myPage";
 	}
 }

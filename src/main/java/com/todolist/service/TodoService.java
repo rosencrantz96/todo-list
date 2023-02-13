@@ -37,14 +37,14 @@ public class TodoService {
 		
 		return todoFormDto;
 	}
-	
-	// 일정 수정 
-	public Long updateTodo(TodoFormDto todoFormDto) throws Exception {
-		Todo todo = todoRepository.findById(todoFormDto.getTodoId()).orElseThrow(EntityNotFoundException::new);
-		
-		todo.updateItem(todoFormDto);
-		
-		return todo.getTodoId();
-	}
+	/*
+	 * // 일정 수정 public Long updateTodo(TodoFormDto todoFormDto) throws Exception {
+	 * Todo todo = todoRepository.findById(todoFormDto.getTodoId()).orElseThrow(
+	 * EntityNotFoundException::new);
+	 * 
+	 * todo.updateItem(todoFormDto);
+	 * 
+	 * return todo.getTodoId(); }
+	 */
 
 }

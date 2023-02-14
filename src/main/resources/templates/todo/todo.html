@@ -86,58 +86,48 @@
 </head>
 <body>
 	<div layout:fragment="content" class="container-xxl">
-		<form th:action="@{'/user/todo'}" method="get" th:object="${todo}">
-			<div class="navLine">
-				<div class="outlistLine">
-					<div class="listLine">
-						날짜입니다.
-					</div>
-				</div>
-				<div class="navPlus add">
-					<a href="/user/todoForm"><img alt="추가"
-						src="/images/plus.png" width="30px;"></a>
-				</div>
+		<div class="navLine">
+			<div class="outlistLine">
+				<div class="listLine">날짜입니다.</div>
 			</div>
-			<div>
-				<div class="outlistLine">
-					<div class="listLine">
-
-						<div class="todo-div todo-display-none" id="todo-div0">
-							<input type="hidden" id="todo-id0">
-							<div class="todo-header">
-								<div
-									class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
-									<input type="checkbox"
-										class="custom-control-input todo-header-item"
-										id="customCheck0" value=0> <label
-										class="custom-control-label todo-header-item"
-										for="customCheck0"><h5 class="title title0">
-											<!--제목-->
-										</h5></label> <span class="time-over todo-display-none" id="time-over0">&nbsp;(기한이
-										지났습니다.)</span>
-								</div>
-								<span
-									class="todo-header-item col-sm-2 dead-line-date created-date0"></span>
-								<span
-									class="todo-header-item col-sm-2 dead-line-date dead-line-date0"></span>
-								<span id="priority0" class="badge badge-pill col-sm-1"
-									style="width: auto;"></span>
-							</div>
-							<div class="todo-desc desc0">
-								<!-- 설명 -->
-							</div>
-							<div class="todo-btn">
-								<button type="button" class="btn btn-outline-primary"
-									data-toggle="modal" data-target="#updateModal"
-									onclick="loadTask(0);">수정</button>
-								<button type="button" class="btn btn-outline-dark"
-									onclick="deleteTodo(0);">삭제</button>
+			<div class="navPlus add">
+				<a href="/user/todoForm"><img alt="추가" src="/images/plus.png"
+					width="30px;"></a>
+			</div>
+		</div>
+		<div class="outlistLine">
+			<div class="listLine">
+				<div class="todo-div todo-display-none" id="todo-div0">
+					<input type="hidden" id="todo-id0">
+					<div class="todo-header">
+						<div th:each="todo : ${todos}">
+							<div
+								class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
+								<input type="checkbox" class="custom-control-input todo-header-item" id="customCheck0" value=0> 
+								<span class="title title0" th:text="${todo.todoContent}"></span>
 							</div>
 						</div>
-
+						<span
+							class="todo-header-item col-sm-2 dead-line-date created-date0"></span>
+						<span
+							class="todo-header-item col-sm-2 dead-line-date dead-line-date0"></span>
+						<span id="priority0" class="badge badge-pill col-sm-1"
+							style="width: auto;"></span>
+					</div>
+					<div class="todo-desc desc0">
+						<!-- 설명 -->
+					</div>
+					<div class="todo-btn">
+						<button type="button" class="btn btn-outline-primary"
+							data-toggle="modal" data-target="#updateModal"
+							onclick="loadTask(0);">수정</button>
+						<button type="button" class="btn btn-outline-dark"
+							onclick="deleteTodo(0);">삭제</button>
 					</div>
 				</div>
-		</form>
+
+			</div>
+		</div>
 		<div class="outlistLine">
 			<div class="listLine">
 				<form>
@@ -155,7 +145,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="../js/todo.js"></script>
-	</div>
+	<script type="text/javascript" src="../js/calendar.js"></script>
 </body>
 </html>

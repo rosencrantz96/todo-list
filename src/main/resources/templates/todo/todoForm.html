@@ -94,16 +94,17 @@
 		<div class="addWrap">
 			<div class="outlistLine">
 				<div class="listLine">
-					<form th:object="${todoFormDto}">
+					<form th:object="${todoFormDto}" method="post">
 						<div class="mb-3">
-							<label for="formGroupExampleInput" class="form-label">DATE</label>
-							<input type="date" class="form-control"
-								id="formGroupExampleInput">
+							<label for="todoDate" class="form-label">DATE</label>
+							<input type="date" class="form-control" th:field="*{todoDate}">
+							<p th:if="${#fields.hasErrors('todoDate')}" th:errors="*{todoDate}" class="fieldError">Incorrect Data</p>
 						</div>
 						<div class="form-floating">
 							<textarea class="form-control" placeholder="일정을 등록하세요."
-								id="floatingTextarea2" style="height: 100px"></textarea>
-							<label for="floatingTextarea2">일정 등록</label>
+								th:field="*{todoContent}"style="height: 100px"></textarea>
+							<p th:if="${#fields.hasErrors('todoContent')}" th:errors="*{todoContent}" class="fieldError">Incorrect Data</p>
+							<label for="todoContent">일정 등록</label>
 						</div>
 						<div class="navLine">
 							<div class="nav">
@@ -111,8 +112,7 @@
 									type="submit">등록</button>
 							</div>
 						</div>
-						<input type="hidden" th:name="${_csrf.parameterName}"
-							th:value="${_csrf.token}">
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 					</form>
 				</div>
 			</div>

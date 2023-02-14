@@ -87,9 +87,7 @@
 <body>
 	<div layout:fragment="content" class="container-xxl">
 		<div class="navLine">
-			<div class="outlistLine">
-				<div class="listLine">날짜입니다.</div>
-			</div>
+			<button class="nav-btn" id="go-today"></button>
 			<div class="navPlus add">
 				<a href="/user/todoForm"><img alt="추가" src="/images/plus.png"
 					width="30px;"></a>
@@ -103,26 +101,19 @@
 						<div th:each="todo : ${todos}">
 							<div
 								class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
-								<input type="checkbox" class="custom-control-input todo-header-item" id="customCheck0" value=0> 
-								<span class="title title0" th:text="${todo.todoContent}"></span>
+								<input type="checkbox"
+									class="custom-control-input todo-header-item" id="customCheck0"
+									value=0> <span class="title title0"
+									th:text="${todo.todoContent}"></span>
+							</div>
+							<div class="todo-btn">
+								<button type="button" class="btn btn-outline-primary"
+									data-toggle="modal" data-target="#updateModal"
+									onclick="loadTask(0);">수정</button>
+								<button type="button" class="btn btn-outline-dark"
+									onclick="deleteTodo(0);">삭제</button>
 							</div>
 						</div>
-						<span
-							class="todo-header-item col-sm-2 dead-line-date created-date0"></span>
-						<span
-							class="todo-header-item col-sm-2 dead-line-date dead-line-date0"></span>
-						<span id="priority0" class="badge badge-pill col-sm-1"
-							style="width: auto;"></span>
-					</div>
-					<div class="todo-desc desc0">
-						<!-- 설명 -->
-					</div>
-					<div class="todo-btn">
-						<button type="button" class="btn btn-outline-primary"
-							data-toggle="modal" data-target="#updateModal"
-							onclick="loadTask(0);">수정</button>
-						<button type="button" class="btn btn-outline-dark"
-							onclick="deleteTodo(0);">삭제</button>
 					</div>
 				</div>
 
@@ -144,7 +135,7 @@
 				</form>
 			</div>
 		</div>
+	<script type="text/javascript" src="../js/todo.js"></script>
 	</div>
-	<script type="text/javascript" src="../js/calendar.js"></script>
 </body>
 </html>

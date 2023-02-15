@@ -9,4 +9,6 @@ import com.todolist.entity.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Long>, QuerydslPredicateExecutor<Todo>{
 	List<Todo> findByTodoDate(String todoDate);
-}
+	
+	/* Todo findByTodoDateOne(String todoDate); */
+} 

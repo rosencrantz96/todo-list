@@ -35,7 +35,7 @@ public class TodoService {
 		return todo.getId();
 	}
 
-	//날짜에 맞는 일정 리스트를 가져오기 (일정은 하루에 여러개일 수 있으니 List에 담아서 사용) 
+	// 날짜에 맞는 일정 리스트를 가져오기 (일정은 하루에 여러개일 수 있으니 List에 담아서 사용) 
 	@Transactional(readOnly = true)
 	public List<TodoDto> getTodoList(String todoDate) {
 		List<Todo> todoList = todoRepository.findByTodoDate(todoDate);
@@ -48,6 +48,19 @@ public class TodoService {
 		
 		return todoDtoList;
 	}
+	
+	// 오늘 날짜의 일정 리스트 가져오기 
+	public TodoDto getTodayList(String todoDate) {
+		Todo todayList = 
+	}
+	
+	
+	/*
+	 * // 날짜 데이터를 가져오기 public String showDate() { Todo todo =
+	 * todoRepository.findByTodoDateOne(getDate());
+	 * 
+	 * }
+	 */
 	
 	
 	

@@ -49,10 +49,10 @@ public class TodoService {
 		return todoDtoList;
 	}
 	
-	// 오늘 날짜의 일정 리스트 가져오기 
-	public TodoDto getTodayList(String todoDate) {
-		Todo todayList = 
-	}
+	/*
+	 * // 오늘 날짜의 일정 리스트 가져오기 public TodoDto getTodayList(String todoDate) { Todo
+	 * todayList = }
+	 */
 	
 	
 	/*

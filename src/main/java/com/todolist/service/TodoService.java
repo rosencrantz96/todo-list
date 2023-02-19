@@ -48,20 +48,7 @@ public class TodoService {
 		
 		return todoDtoList;
 	}
-	
-	/*
-	 * // 오늘 날짜의 일정 리스트 가져오기 public TodoDto getTodayList(String todoDate) { Todo
-	 * todayList = }
-	 */
-	
-	
-	/*
-	 * // 날짜 데이터를 가져오기 public String showDate() { Todo todo =
-	 * todoRepository.findByTodoDateOne(getDate());
-	 * 
-	 * }
-	 */
-	
+		
 	
 	
 	/*	

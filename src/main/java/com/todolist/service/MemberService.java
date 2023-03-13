@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
+	// TODO 1. 회원가입 연습해보기 2. 엔티티랑 서비스 설계 다시 하기 
 	private final MemberRepository memberRepository;
 	
 	@Override

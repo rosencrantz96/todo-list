@@ -99,12 +99,9 @@
 					<input type="hidden" id="todo-id0">
 					<div class="todo-header">
 						<div th:each="todo : ${todos}">
-							<div
-								class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
-								<input type="checkbox"
-									class="custom-control-input todo-header-item" id="customCheck0"
-									value=0> <span class="title title0"
-									th:text="${todo.todoContent}"></span>
+							<div class="custom-control form-control-lg custom-checkbox col-sm-7 todo-header-item">
+								<input type="checkbox" class="custom-control-input todo-header-item" id="customCheck0" value=0> 
+								<span class="title title0" th:text="${todo.todoContent}"></span>
 							</div>
 							<div class="todo-btn">
 								<button type="button" class="nav-btn"

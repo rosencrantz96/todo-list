@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
 	// TODO 1. 회원가입 연습해보기 2. 엔티티랑 서비스 설계 다시 하기 
+	// TODO 회원가입 이외의 기능 구상해보기, 달력 어떻게 만드는지...
 	private final MemberRepository memberRepository;
 	
 	@Override

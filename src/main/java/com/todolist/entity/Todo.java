@@ -28,7 +28,11 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+<<<<<<< HEAD
 public class Todo extends BaseEntity {
+=======
+public class Todo extends BaseEntity { // BaseEntity를 상속받아서 최초 작성 시간, 등록자, 등의 정보를 받게 함
+>>>>>>> c4a1f15f6843a7945b4bf7888d69d5516edbca41
 	// TODO : '하루'에 담기는 '일정'은 여러개... 그러니까 날짜 객체에 일정들을 배열로 받아야 하는 걸까...?
 
 	@Id
@@ -55,10 +59,16 @@ public class Todo extends BaseEntity {
 		todo.setTodoDate(todoFormDto.getTodoDate());
 		todo.setTodoContent(todoFormDto.getTodoContent());
 		todo.setTodoStatus(TodoStatus.START);
+<<<<<<< HEAD
 
 		return todo;
 	}
 
+=======
+		
+		return todo;
+	}
+>>>>>>> c4a1f15f6843a7945b4bf7888d69d5516edbca41
 	/*
 	 * public void updateItem(TodoFormDto todoFormDto) { this.todoId =
 	 * todoFormDto.getTodoId(); this.todoDate = todoFormDto.getTodoDate();
